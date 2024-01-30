@@ -58,7 +58,7 @@ export class BreedingCalculator {
   ) {
     const mates: Pal[] = [];
 
-    for (let i = childrenRankRange.index; i <= this.sortedRanks.length; i++) {
+    for (let i = 0; i <= this.sortedRanks.length; i++) {
       const mateRank = this.sortedRanks[i];
       const possibleChildrenRank = (mateRank + parentRank) / 2;
 
@@ -70,7 +70,8 @@ export class BreedingCalculator {
         break;
       }
 
-      mates.push(this.palsByCombiRank.get(mateRank)!);
+      const mate = this.palsByCombiRank.get(mateRank);
+      if (mate) mates.push(mate);
     }
 
     return mates;
@@ -101,16 +102,30 @@ export class BreedingCalculator {
     return parents;
   }
 
-  possibleOffspringFor(pal: Pal): Pal[] {
+  getOffspringFor(pal: Pal): Pal[] {
     const offspring = new Set<Pal>();
 
     for (const rank of this.sortedRanks) {
-      const child = this.palsByCombiRank.get(rank)!;
+      const possibleChild = this.palsByCombiRank.get(rank)!;
 
-      if (child.Parent1 === parent1.Ref && child.Parent2 === parent2.Ref) {
-        offspring.add(child);
+      const mates = this.findMates(
+        this.getChildrenRankRange(rank),
+        pal.CombiRank
+      );
+
+      if (mates.length) {
+        offspring.add(possibleChild);
       }
     }
+
+    // remove special breeds that pal is not one of the parents
+    this.specialBreeds.forEach((breed) => {
+      if (pal === breed[0] || pal === breed[1]) {
+        offspring.add(breed[2]);
+      } else {
+        offspring.delete(breed[2]);
+      }
+    });
 
     return Array.from(offspring);
   }
