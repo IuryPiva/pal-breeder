@@ -6,14 +6,19 @@ export class PalWorld {
   palCodeToName = palTranslations;
   nameToPal = {} as Record<string, Pal>;
 
-  setup() {
+  constructor() {
     this.parseDataTable();
   }
 
   parseDataTable() {
     this.pals.forEach((pal, ref) => {
-      const code = pal.OverrideNameTextID ?? "PAL_NAME_" + ref;
+      const code =
+        pal.OverrideNameTextID !== "None"
+          ? pal.OverrideNameTextID
+          : "PAL_NAME_" + ref;
+
       const name = this.palCodeToName[code] ?? code;
+      pal.Name = name;
 
       this.nameToPal[name] = pal;
     });
