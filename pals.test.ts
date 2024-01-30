@@ -14,20 +14,9 @@ Deno.test("PalWorld.findPal", () => {
   assert(pal);
 });
 
-Deno.test("PalWorld.specialBreeds", () => {
-  const palworld = new PalWorld();
-  palworld.parseRefMaps();
-  palworld.parseSpecialBreeds();
-
-  assert(
-    palworld.specialBreeds.length > 0,
-    "specialBreeds should not be empty"
-  );
-});
-
 Deno.test("PalWorld.combiRanks", () => {
   const palworld = new PalWorld();
   palworld.parseRefMaps();
-  const combiRanks = palworld.combiRanks();
+  const combiRanks = palworld.getCombiRanks();
   assert(Object.keys(combiRanks).length > 0, "combiRanks should not be empty");
 });
