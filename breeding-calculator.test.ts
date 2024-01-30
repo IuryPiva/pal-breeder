@@ -4,7 +4,6 @@ import { BreedingCalculator } from "./breeding-calculator.ts";
 
 Deno.test("BreedingCalculator.specialBreeds", () => {
   const palworld = new PalWorld();
-  palworld.setup();
   const breedingCalculator = new BreedingCalculator(palworld);
 
   assert(
@@ -15,9 +14,17 @@ Deno.test("BreedingCalculator.specialBreeds", () => {
 
 Deno.test("BreedingCalculator.parentsFor", () => {
   const palworld = new PalWorld();
-  palworld.setup();
   const breedingCalculator = new BreedingCalculator(palworld);
   const pal = palworld.findPal("Mossanda")!;
+
+  const parents = breedingCalculator.parentsFor(pal);
+  assert(parents.length > 0, "parents should not be empty");
+});
+
+Deno.test("BreedingCalculator.parentsFor specialBreed", () => {
+  const palworld = new PalWorld();
+  const breedingCalculator = new BreedingCalculator(palworld);
+  const pal = palworld.findPal("Mossanda Lux")!;
 
   const parents = breedingCalculator.parentsFor(pal);
   assert(parents.length > 0, "parents should not be empty");

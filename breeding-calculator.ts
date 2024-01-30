@@ -81,7 +81,10 @@ export class BreedingCalculator {
   }
 
   parentsFor(pal: Pal) {
-    const parents: [Pal, Pal][] = [];
+    const parents: [Pal, Pal][] = this.getSpecialBreedParents(pal);
+
+    if (parents.length > 0) return parents.concat([[pal, pal]]);
+
     const childrenRankRange = this.getChildrenRankRange(pal.CombiRank);
 
     for (const rank of this.sortedRanks) {
@@ -92,10 +95,6 @@ export class BreedingCalculator {
         parents.push([ref, mate]);
       });
     }
-
-    this.getSpecialBreedParents(pal).forEach((parentsPair) => {
-      parents.push(parentsPair);
-    });
 
     return parents;
   }

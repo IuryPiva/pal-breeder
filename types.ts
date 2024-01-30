@@ -1,4 +1,5 @@
 export interface Pal {
+  Name?: string;
   OverrideNameTextID: string;
   NamePrefixID: string;
   OverridePartnerSkillTextID: string;
