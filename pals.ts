@@ -4,38 +4,33 @@ import { Pal } from "./types.ts";
 export class PalWorld {
   pals = new Map(palMapArray);
   palCodeToName = palTranslations;
-  palCodeToRef = {} as { [key: string]: string };
-  palNameToRef = {} as { [key: string]: string };
+  nameToPal = {} as Record<string, Pal>;
 
   setup() {
-    this.parseRefMaps();
+    this.parseDataTable();
   }
 
-  parseRefMaps() {
+  parseDataTable() {
     this.pals.forEach((pal, ref) => {
       const code = pal.OverrideNameTextID ?? "PAL_NAME_" + ref;
       const name = this.palCodeToName[code] ?? code;
-      this.palCodeToRef[code] = ref;
-      this.palNameToRef[name] = ref;
-    });
-  }
 
-  findRef(refOrName: string): string {
-    return this.palNameToRef[refOrName] ?? refOrName;
+      this.nameToPal[name] = pal;
+    });
   }
 
   findPal(refOrName: string): Pal | undefined {
-    return this.pals.get(this.findRef(refOrName));
+    return this.nameToPal[refOrName] ?? this.pals.get(refOrName);
   }
 
-  getCombiRanks() {
-    const refCombiRank = new Map<number, string>();
+  getPalsByCombiRanks() {
+    const palsByCombiRank = new Map<number, Pal>();
 
-    this.pals.forEach((pal, ref) => {
+    this.pals.forEach((pal) => {
       if (!pal.CombiRank || pal.CombiRank == 9999) return;
-      refCombiRank.set(pal.CombiRank, ref);
+      palsByCombiRank.set(pal.CombiRank, pal);
     });
 
-    return refCombiRank;
+    return palsByCombiRank;
   }
 }
