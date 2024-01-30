@@ -3,23 +3,37 @@ import { specialBreedsText } from "./pal-db.ts";
 import { PalWorld } from "./pals.ts";
 import { Pal } from "./types.ts";
 
-type Mate = {
-  ref: string;
-  rank: number;
-  index: number;
-};
-
 type IndexedRange = {
   index: number;
   range: [number, number];
 };
 
 export class BreedingCalculator {
-  combiRanks: Map<number, string>;
+  combiRanks: Map<number, Pal>;
   sortedRanks: number[];
+  specialBreeds: [Pal, Pal, Pal][] = [];
+
+  private parseSpecialBreeds() {
+    specialBreedsText.split("\n").map((line) => {
+      const [parent1, rest] = line.split("+");
+      const [parent2, child] = rest.split("=");
+
+      const palNames = [parent1, parent2, child].map((name) => name.trim());
+
+      const pals = palNames.map((name) => {
+        const pal = this.palWorld.findPal(name);
+
+        assert(pal, `Could not find pal with name: ${name}`);
+
+        return pal;
+      }) as [Pal, Pal, Pal]; // https://twitter.com/IuryPiva/status/1752342264389554548;
+
+      this.specialBreeds.push(pals);
+    });
+  }
 
   constructor(public palWorld: PalWorld) {
-    this.combiRanks = this.palWorld.getCombiRanks();
+    this.combiRanks = this.palWorld.getPalsByCombiRanks();
     this.sortedRanks = [...this.combiRanks.keys()].sort((a, b) => a - b);
     this.parseSpecialBreeds();
   }
@@ -40,7 +54,7 @@ export class BreedingCalculator {
     childrenRankRange: { index: number; range: [number, number] },
     parentRank: number
   ) {
-    const mates: Mate[] = [];
+    const mates: Pal[] = [];
 
     for (let i = childrenRankRange.index; i <= this.sortedRanks.length; i++) {
       const mateRank = this.sortedRanks[i];
@@ -54,19 +68,20 @@ export class BreedingCalculator {
         break;
       }
 
-      mates.push({
-        ref: this.combiRanks.get(mateRank)!,
-        rank: mateRank,
-        index: i,
-      });
+      mates.push(this.combiRanks.get(mateRank)!);
     }
 
     return mates;
   }
 
-  parentsFor(pal: Pal) {
-    const parents: (string | number)[][] = [];
+  getSpecialBreedParents(pal: Pal): [Pal, Pal][] {
+    return this.specialBreeds
+      .filter((breed) => breed.at(-1) == pal)
+      .map((breed) => [breed[0], breed[1]] as [Pal, Pal]);
+  }
 
+  parentsFor(pal: Pal) {
+    const parents: [Pal, Pal][] = [];
     const childrenRankRange = this.getChildrenRankRange(pal.CombiRank);
 
     for (const rank of this.sortedRanks) {
@@ -74,31 +89,14 @@ export class BreedingCalculator {
       const ref = this.combiRanks.get(rank)!;
 
       this.findMates(childrenRankRange, rank).forEach((mate) => {
-        parents.push([rank, ref, mate.rank, mate.ref]);
+        parents.push([ref, mate]);
       });
     }
 
-    return parents;
-  }
-
-  specialBreeds: [Pal, Pal, Pal][] = [];
-
-  parseSpecialBreeds() {
-    specialBreedsText.split("\n").map((line) => {
-      const [parent1, rest] = line.split("+");
-      const [parent2, child] = rest.split("=");
-
-      const palNames = [parent1, parent2, child].map((name) => name.trim());
-
-      const pals = palNames.map((name) => {
-        const pal = this.palWorld.findPal(name);
-
-        assert(pal, `Could not find pal with name: ${name}`);
-
-        return pal;
-      }) as [Pal, Pal, Pal]; // https://twitter.com/IuryPiva/status/1752342264389554548;
-
-      this.specialBreeds.push(pals);
+    this.getSpecialBreedParents(pal).forEach((parentsPair) => {
+      parents.push(parentsPair);
     });
+
+    return parents;
   }
 }
