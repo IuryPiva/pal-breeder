@@ -9,6 +9,7 @@ type IndexedRange = {
 };
 
 export class BreedingCalculator {
+  palWorld: PalWorld;
   combiRanks: Map<number, Pal>;
   sortedRanks: number[];
   specialBreeds: [Pal, Pal, Pal][] = [];
@@ -32,7 +33,8 @@ export class BreedingCalculator {
     });
   }
 
-  constructor(public palWorld: PalWorld) {
+  constructor() {
+    this.palWorld = new PalWorld();
     this.combiRanks = this.palWorld.getPalsByCombiRanks();
     this.sortedRanks = [...this.combiRanks.keys()].sort((a, b) => a - b);
     this.parseSpecialBreeds();
