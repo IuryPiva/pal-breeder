@@ -14,6 +14,6 @@ Deno.test("PalWorld.findPal", () => {
 
 Deno.test("PalWorld.combiRanks", () => {
   const palworld = new PalWorld();
-  const combiRanks = palworld.getPalsByCombiRanks();
+  const combiRanks = palworld.getPalsByCombiRank();
   assert(combiRanks.size > 0, "combiRanks should not be empty");
 });

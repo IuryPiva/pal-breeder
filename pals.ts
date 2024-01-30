@@ -28,7 +28,7 @@ export class PalWorld {
     return this.nameToPal[refOrName] ?? this.pals.get(refOrName);
   }
 
-  getPalsByCombiRanks() {
+  getPalsByCombiRank() {
     const palsByCombiRank = new Map<number, Pal>();
 
     this.pals.forEach((pal) => {

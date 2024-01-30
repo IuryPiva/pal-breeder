@@ -10,7 +10,7 @@ type IndexedRange = {
 
 export class BreedingCalculator {
   palWorld: PalWorld;
-  combiRanks: Map<number, Pal>;
+  palsByCombiRank: Map<number, Pal>;
   sortedRanks: number[];
   specialBreeds: [Pal, Pal, Pal][] = [];
 
@@ -35,8 +35,8 @@ export class BreedingCalculator {
 
   constructor() {
     this.palWorld = new PalWorld();
-    this.combiRanks = this.palWorld.getPalsByCombiRanks();
-    this.sortedRanks = [...this.combiRanks.keys()].sort((a, b) => a - b);
+    this.palsByCombiRank = this.palWorld.getPalsByCombiRank();
+    this.sortedRanks = [...this.palsByCombiRank.keys()].sort((a, b) => a - b);
     this.parseSpecialBreeds();
   }
 
@@ -70,7 +70,7 @@ export class BreedingCalculator {
         break;
       }
 
-      mates.push(this.combiRanks.get(mateRank)!);
+      mates.push(this.palsByCombiRank.get(mateRank)!);
     }
 
     return mates;
@@ -91,7 +91,7 @@ export class BreedingCalculator {
 
     for (const rank of this.sortedRanks) {
       if (rank > pal.CombiRank) break;
-      const ref = this.combiRanks.get(rank)!;
+      const ref = this.palsByCombiRank.get(rank)!;
 
       this.findMates(childrenRankRange, rank).forEach((mate) => {
         parents.push([ref, mate]);
@@ -99,5 +99,19 @@ export class BreedingCalculator {
     }
 
     return parents;
+  }
+
+  possibleOffspringFor(pal: Pal): Pal[] {
+    const offspring = new Set<Pal>();
+
+    for (const rank of this.sortedRanks) {
+      const child = this.palsByCombiRank.get(rank)!;
+
+      if (child.Parent1 === parent1.Ref && child.Parent2 === parent2.Ref) {
+        offspring.add(child);
+      }
+    }
+
+    return Array.from(offspring);
   }
 }
