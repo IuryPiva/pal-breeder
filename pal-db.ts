@@ -1,6 +1,11 @@
 import type { Pal } from "./types.ts";
 
-export const palMapArray: Array<[string, Pal]> = [
+export type PalWithOptionalName = Omit<Pal, "Name" | "Order"> & {
+  Name?: string;
+  Order?: number;
+};
+
+export const palMapArray: Array<[string, PalWithOptionalName]> = [
   [
     "GYM_BlackGriffon",
     {

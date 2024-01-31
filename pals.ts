@@ -1,8 +1,13 @@
-import { palMapArray, palTranslations } from "./pal-db.ts";
+import { assert } from "https://deno.land/std@0.213.0/assert/assert.ts";
+import { palMapArray, palTranslations, PalWithOptionalName } from "./pal-db.ts";
 import { Pal } from "./types.ts";
 
+function validatePal(pal: PalWithOptionalName | Pal): pal is Pal {
+  return Boolean(pal.Name && typeof pal.Order === "number");
+}
+
 export class PalWorld {
-  pals = new Map(palMapArray);
+  pals = new Map<string, Pal>();
   palCodeToName = palTranslations;
   nameToPal = {} as Record<string, Pal>;
 
@@ -11,7 +16,9 @@ export class PalWorld {
   }
 
   parseDataTable() {
-    this.pals.forEach((pal, ref) => {
+    let order = 0;
+
+    palMapArray.forEach(([ref, pal]) => {
       const code =
         pal.OverrideNameTextID !== "None"
           ? pal.OverrideNameTextID
@@ -19,8 +26,12 @@ export class PalWorld {
 
       const name = this.palCodeToName[code] ?? code;
       pal.Name = name;
+      pal.Order = order++;
 
-      this.nameToPal[name] = pal;
+      assert(validatePal(pal), `Invalid pal: ${JSON.stringify(pal)}`);
+
+      this.pals.set(ref, pal);
+      this.nameToPal[pal.Name] = pal;
     });
   }
 
