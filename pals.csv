@@ -1,138 +1,138 @@
-Name,CombiRank,BPClass
-Blazamut,10,KingBahamut
-Suzaku Aqua,30,Suzaku_Water
-Suzaku,50,Suzaku
-Shadowbeak,60,BlackGriffon
-Necromus,70,BlackCentaur
-Paladius,80,SaintCentaur
-Jetragon,90,JetDragon
-Frostallion Noct,100,IceHorse_Dark
-Frostallion,120,IceHorse
-Cryolinx,130,WhiteTiger
-Orserk,140,ThunderDragonMan
-Astegon,150,BlackMetalDragon
-Helzephyr,190,HadesBird
-Grizzbolt,200,ElecPanda
-Lyleen Noct,210,LilyQueen_Dark
-Beakon,220,ThunderBird
-Ice Reptyro,230,VolcanicMonster_Ice
-Pyrin Noct,240,FireKirin_Dark
-Lyleen,250,LilyQueen
-Menasting,260,DarkScorpion
-Relaxaurus Lux,270,LazyDragon_Electric
-Relaxaurus,280,LazyDragon
-Mammorest Cryst,290,GrassMammoth_Ice
-Mammorest,300,GrassMammoth
-Jormuntide,310,Umihebi
-Jormuntide Ignis,315,Umihebi_Fire
-Reptyro,320,VolcanicMonster
-Elizabee,330,QueenBee
-Warsect ,340,HerculesBeetle
-Quivern,350,SkyDragon
-Pyrin,360,FireKirin
-Faleris,370,Horus
-Ragnahawk,380,RedArmorBird
-Mossanda Lux,390,GrassPanda_Electric
-Sweepa,410,MopKing
-Nitewing,420,HawkBird
-Mossanda,430,GrassPanda
-Ice Kingpaca,440,KingAlpaca_Ice
-Sibelyx,450,WhiteMoth
-Wumpo,460,Yeti
-Kingpaca,470,KingAlpaca
-Wumpo Botan,480,Yeti_Grass
-Cinnamoth,490,CuteButterfly
-Azurobe,500,BlueDragon
-Grintale,510,NaughtyCat
-Penking,520,CaptainPenguin
-Elphidran Aqua,530,FairyDragon_Water
-Elphidran,540,FairyDragon
-Surfent Terra,550,Serpent_Ground
-Surfent,560,Serpent
-Anubis,570,Anubis
-Incineram Noct,580,Baphomet_Dark
-Incineram,590,Baphomet
-Vanwyrm Cryst,620,BirdDragon_Ice
-Bushi,640,Ronin
-Vanwyrm,660,BirdDragon
-Blazehowl Noct,670,Manticore_Dark
-Univolt,680,Kirin
-Katress,700,CatMage
-Blazehowl,710,Manticore
-Rayhound,740,ThunderDog
-Tombat,750,CatBat
-Foxcicle,760,IceFox
-Petallia,780,FlowerDoll
-Arsox,790,FlameBuffalo
-Chillet,800,WeaselDragon
-Dinossom Lux,810,FlowerDinosaur_Electric
-Dinossom,820,FlowerDinosaur
-Kitsun,830,AmaterasuWolf
-Broncherry Aqua,840,SakuraSaurus_Water
-Digtoise,850,DrillGame
-Broncherry,860,SakuraSaurus
-Celaray,870,FlyingManta
-Reindrix,880,IceDeer
-Melpaca,890,Alpaca
-Dumud,895,LazyCatfish
-Eikthyrdeer Terra,900,Deer_Ground
-Mozzarina,910,CowPal
-Eikthyrdeer,920,Deer
-Caprity,930,BerryGoat
-Lovander,940,PinkLizard
-Loupmoon,950,Werewolf
-Fenglope,980,FengyunDeeper
-Verdash,990,GrassRabbitMan
-Robinquill Terra,1000,RobinHood_Ground
-Felbat,1010,CatVampire
-Robinquill,1020,RobinHood
-Galeclaw,1030,Eagle
-Gorirat,1040,Gorilla
-Vaelet,1050,VioletFairy
-Direhowl,1060,Garm
-Beegarde,1070,SoldierBee
-Cawgnito,1080,DarkCrow
-Gobfin,1090,SharkKid
-Gobfin Ignis,1100,SharkKid_Fire
-Lunaris,1110,Mutant
-Leezpunk,1120,LizardMan
-Rushoar,1130,Boar
-Leezpunk Ignis,1140,LizardMan_Fire
-Maraith,1150,GhostBeast
-Rooby,1155,FlameBambi
-Wixen,1160,FoxMage
-Nox,1180,NightFox
-Woolipop,1190,SweetsSheep
-Dazzi,1210,RaijinDaughter
-Fuddler,1220,CuteMole
-Daedream,1230,DreamDemon
-Gumoss,1240,PlantSlime_Flower
-Tanzee,1250,Monkey
-Kelpsea,1260,Kelpie
-Kelpsea Ignis,1270,Kelpie_Fire
-Flopie,1280,FlowerRabbit
-Killamari,1290,NegativeOctopus
-Swee,1300,MopBaby
-Ribbuny,1310,PinkRabbit
-Bristla,1320,LittleBriarRose
-Fuack,1330,BluePlatypus
-Tocotoco,1340,ColorfulBird
-Pengullet,1350,Penguin
-Jolthog Cryst,1360,Hedgehog_Ice
-Jolthog,1370,Hedgehog
-Depresso,1380,NegativeKoala
-Hoocrates,1390,WizardOwl
-Foxparks,1400,Kitsunebi
-Flambelle,1405,LavaGirl
-Sparkit,1410,ElecCat
-Hangyu,1420,WindChimes
-Hangyu Cryst,1422,WindChimes_Ice
-Lifmunk,1430,Carbunclo
-Mau Cryst,1440,Bastet_Ice
-Vixy,1450,CuteFox
-Cremis,1455,WoolFox
-Cattiva,1460,PinkCat
-Lamball,1470,SheepBall
-Mau,1480,Bastet
-Teafant,1490,Ganesha
-Chikipi,1500,ChickenPal
+Name,CombiRank,BPClass,Order
+Blazamut,10,KingBahamut,249
+Suzaku Aqua,30,Suzaku_Water,208
+Suzaku,50,Suzaku,207
+Shadowbeak,60,BlackGriffon,252
+Necromus,70,BlackCentaur,305
+Paladius,80,SaintCentaur,296
+Jetragon,90,JetDragon,280
+Frostallion Noct,100,IceHorse_Dark,242
+Frostallion,120,IceHorse,241
+Cryolinx,130,WhiteTiger,214
+Orserk,140,ThunderDragonMan,310
+Astegon,150,BlackMetalDragon,277
+Helzephyr,190,HadesBird,301
+Grizzbolt,200,ElecPanda,187
+Lyleen Noct,210,LilyQueen_Dark,268
+Beakon,220,ThunderBird,294
+Ice Reptyro,230,VolcanicMonster_Ice,224
+Pyrin Noct,240,FireKirin_Dark,210
+Lyleen,250,LilyQueen,267
+Menasting,260,DarkScorpion,309
+Relaxaurus Lux,270,LazyDragon_Electric,229
+Relaxaurus,280,LazyDragon,228
+Mammorest Cryst,290,GrassMammoth_Ice,244
+Mammorest,300,GrassMammoth,243
+Jormuntide,310,Umihebi,202
+Jormuntide Ignis,315,Umihebi_Fire,203
+Reptyro,320,VolcanicMonster,223
+Elizabee,330,QueenBee,269
+Warsect ,340,HerculesBeetle,295
+Quivern,350,SkyDragon,300
+Pyrin,360,FireKirin,209
+Faleris,370,Horus,248
+Ragnahawk,380,RedArmorBird,302
+Mossanda Lux,390,GrassPanda_Electric,273
+Sweepa,410,MopKing,291
+Nitewing,420,HawkBird,265
+Mossanda,430,GrassPanda,272
+Ice Kingpaca,440,KingAlpaca_Ice,286
+Sibelyx,450,WhiteMoth,253
+Wumpo,460,Yeti,262
+Kingpaca,470,KingAlpaca,285
+Wumpo Botan,480,Yeti_Grass,263
+Cinnamoth,490,CuteButterfly,308
+Azurobe,500,BlueDragon,219
+Grintale,510,NaughtyCat,307
+Penking,520,CaptainPenguin,298
+Elphidran Aqua,530,FairyDragon_Water,212
+Elphidran,540,FairyDragon,211
+Surfent Terra,550,Serpent_Ground,217
+Surfent,560,Serpent,216
+Anubis,570,Anubis,175
+Incineram Noct,580,Baphomet_Dark,177
+Incineram,590,Baphomet,176
+Vanwyrm Cryst,620,BirdDragon_Ice,236
+Bushi,640,Ronin,303
+Vanwyrm,660,BirdDragon,235
+Blazehowl Noct,670,Manticore_Dark,284
+Univolt,680,Kirin,193
+Katress,700,CatMage,292
+Blazehowl,710,Manticore,283
+Rayhound,740,ThunderDog,275
+Tombat,750,CatBat,271
+Foxcicle,760,IceFox,279
+Petallia,780,FlowerDoll,306
+Arsox,790,FlameBuffalo,274
+Chillet,800,WeaselDragon,299
+Dinossom Lux,810,FlowerDinosaur_Electric,239
+Dinossom,820,FlowerDinosaur,238
+Kitsun,830,AmaterasuWolf,230
+Broncherry Aqua,840,SakuraSaurus_Water,247
+Digtoise,850,DrillGame,185
+Broncherry,860,SakuraSaurus,246
+Celaray,870,FlyingManta,304
+Reindrix,880,IceDeer,251
+Melpaca,890,Alpaca,215
+Dumud,895,LazyCatfish,312
+Eikthyrdeer Terra,900,Deer_Ground,184
+Mozzarina,910,CowPal,261
+Eikthyrdeer,920,Deer,183
+Caprity,930,BerryGoat,250
+Lovander,940,PinkLizard,256
+Loupmoon,950,Werewolf,204
+Fenglope,980,FengyunDeeper,222
+Verdash,990,GrassRabbitMan,278
+Robinquill Terra,1000,RobinHood_Ground,227
+Felbat,1010,CatVampire,245
+Robinquill,1020,RobinHood,226
+Galeclaw,1030,Eagle,186
+Gorirat,1040,Gorilla,190
+Vaelet,1050,VioletFairy,264
+Direhowl,1060,Garm,189
+Beegarde,1070,SoldierBee,270
+Cawgnito,1080,DarkCrow,218
+Gobfin,1090,SharkKid,199
+Gobfin Ignis,1100,SharkKid_Fire,200
+Lunaris,1110,Mutant,196
+Leezpunk,1120,LizardMan,231
+Rushoar,1130,Boar,180
+Leezpunk Ignis,1140,LizardMan_Fire,232
+Maraith,1150,GhostBeast,225
+Rooby,1155,FlameBambi,314
+Wixen,1160,FoxMage,255
+Nox,1180,NightFox,297
+Woolipop,1190,SweetsSheep,213
+Dazzi,1210,RaijinDaughter,198
+Fuddler,1220,CuteMole,276
+Daedream,1230,DreamDemon,281
+Gumoss,1240,PlantSlime_Flower,288
+Tanzee,1250,Monkey,282
+Kelpsea,1260,Kelpie,258
+Kelpsea Ignis,1270,Kelpie_Fire,259
+Flopie,1280,FlowerRabbit,266
+Killamari,1290,NegativeOctopus,260
+Swee,1300,MopBaby,290
+Ribbuny,1310,PinkRabbit,293
+Bristla,1320,LittleBriarRose,195
+Fuack,1330,BluePlatypus,233
+Tocotoco,1340,ColorfulBird,182
+Pengullet,1350,Penguin,197
+Jolthog Cryst,1360,Hedgehog_Ice,192
+Jolthog,1370,Hedgehog,191
+Depresso,1380,NegativeKoala,221
+Hoocrates,1390,WizardOwl,257
+Foxparks,1400,Kitsunebi,194
+Flambelle,1405,LavaGirl,313
+Sparkit,1410,ElecCat,240
+Hangyu,1420,WindChimes,205
+Hangyu Cryst,1422,WindChimes_Ice,206
+Lifmunk,1430,Carbunclo,181
+Mau Cryst,1440,Bastet_Ice,179
+Vixy,1450,CuteFox,254
+Cremis,1455,WoolFox,311
+Cattiva,1460,PinkCat,220
+Lamball,1470,SheepBall,201
+Mau,1480,Bastet,178
+Teafant,1490,Ganesha,188
+Chikipi,1500,ChickenPal,237
