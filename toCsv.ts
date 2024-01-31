@@ -2,7 +2,7 @@ import { BreedingCalculator } from "./breeding-calculator.ts";
 
 const palsToCsv = () => {
   const bc = new BreedingCalculator();
-  const headers = ["Name", "CombiRank"] as const;
+  const headers = ["Name", "CombiRank", "BPClass"] as const;
   const csv = [headers.join(",")];
 
   for (const rank of bc.sortedRanks) {
