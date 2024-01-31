@@ -23483,31 +23483,41 @@ export const palTranslations: { [key: string]: string } = {
   PAL_NAME_SnowBoss: "Victor & Shadowbeak",
 };
 
-export const specialBreedsText = `Relaxaurus + Sparkit = Relaxaurus Lux
-Incineram + Maraith = Incineram Noct
-Mau + Pengullet = Mau Cryst
-Vanwyrm + Foxcicle = Vanwyrm Cryst
-Eikthyrdeer + Hangyu = Eikthyrdeer Terra
-Elphidran + Surfent = Elphidran Aqua
-Pyrin + Katress = Pyrin Noct
-Mammorest + Wumpo = Mammorest Cryst
-Mossanda + Grizzbolt = Mossanda Lux
-Dinossom + Rayhound = Dinossom Lux
-Jolthog + Pengullet = Jolthog Cryst
-Frostallion + Helzephyr = Frostallion Noct
-Kingpaca + Reindrix = Ice Kingpaca
-Lyleen + Menasting = Lyleen Noct
-Leezpunk + Flambelle = Leezpunk Ignis
-Blazehowl + Felbat = Blazehowl Noct
-Robinquill + Fuddler = Robinquill Terra
-Broncherry + Fuack = Broncherry Aqua
-Surfent + Dumud = Surfent Terra
-Gobfin + Rooby = Gobfin Ignis
-Suzaku + Jormuntide = Suzaku Aqua
-Reptyro + Foxcicle = Ice Reptyro
-Hangyu + Swee = Hangyu Cryst
-Mossanda + Petallia = Lyleen
-Vanwyrm + Anubis = Faleris
-Mossanda + Rayhound = Grizzbolt
-Grizzbolt + Relaxaurus = Orserk
-Kitsun + Astegon = Shadowbeak`;
+export const specialBreedsNames = [
+  ["Relaxaurus", "Sparkit", "Relaxaurus Lux"],
+  ["Incineram", "Maraith", "Incineram Noct"],
+  ["Mau", "Pengullet", "Mau Cryst"],
+  ["Vanwyrm", "Foxcicle", "Vanwyrm Cryst"],
+  ["Eikthyrdeer", "Hangyu", "Eikthyrdeer Terra"],
+  ["Elphidran", "Surfent", "Elphidran Aqua"],
+  ["Pyrin", "Katress", "Pyrin Noct"],
+  ["Mammorest", "Wumpo", "Mammorest Cryst"],
+  ["Mossanda", "Grizzbolt", "Mossanda Lux"],
+  ["Dinossom", "Rayhound", "Dinossom Lux"],
+  ["Jolthog", "Pengullet", "Jolthog Cryst"],
+  ["Frostallion", "Helzephyr", "Frostallion Noct"],
+  ["Kingpaca", "Reindrix", "Ice Kingpaca"],
+  ["Lyleen", "Menasting", "Lyleen Noct"],
+  ["Leezpunk", "Flambelle", "Leezpunk Ignis"],
+  ["Blazehowl", "Felbat", "Blazehowl Noct"],
+  ["Robinquill", "Fuddler", "Robinquill Terra"],
+  ["Broncherry", "Fuack", "Broncherry Aqua"],
+  ["Surfent", "Dumud", "Surfent Terra"],
+  ["Gobfin", "Rooby", "Gobfin Ignis"],
+  ["Suzaku", "Jormuntide", "Suzaku Aqua"],
+  ["Reptyro", "Foxcicle", "Ice Reptyro"],
+  ["Hangyu", "Swee", "Hangyu Cryst"],
+  ["Mossanda", "Petallia", "Lyleen"],
+  ["Vanwyrm", "Anubis", "Faleris"],
+  ["Mossanda", "Rayhound", "Grizzbolt"],
+  ["Grizzbolt", "Relaxaurus", "Orserk"],
+  ["Kitsun", "Astegon", "Shadowbeak"],
+];
+
+export const canOnlyBreedSameSpecies = [
+  "Frostallion",
+  "Jetragon",
+  "Paladius",
+  "Necromus",
+  "Jormuntide Ignis",
+];

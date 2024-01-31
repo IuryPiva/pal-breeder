@@ -1,5 +1,5 @@
 import { assert } from "https://deno.land/std@0.213.0/assert/assert.ts";
-import { specialBreedsText } from "./pal-db.ts";
+import { canOnlyBreedSameSpecies, specialBreedsNames } from "./pal-db.ts";
 import { PalWorld } from "./pals.ts";
 import { Pal } from "./types.ts";
 
@@ -13,14 +13,10 @@ export class BreedingCalculator {
   palsByCombiRank: Map<number, Pal>;
   sortedRanks: number[];
   specialBreeds: [Pal, Pal, Pal][] = [];
+  uniqueBreeds: Pal[] = [];
 
   private parseSpecialBreeds() {
-    specialBreedsText.split("\n").map((line) => {
-      const [parent1, rest] = line.split("+");
-      const [parent2, child] = rest.split("=");
-
-      const palNames = [parent1, parent2, child].map((name) => name.trim());
-
+    specialBreedsNames.map((palNames) => {
       const pals = palNames.map((name) => {
         const pal = this.palWorld.findPal(name);
 
@@ -30,6 +26,14 @@ export class BreedingCalculator {
       }) as [Pal, Pal, Pal]; // https://twitter.com/IuryPiva/status/1752342264389554548;
 
       this.specialBreeds.push(pals);
+    });
+
+    canOnlyBreedSameSpecies.forEach((name) => {
+      const pal = this.palWorld.findPal(name);
+
+      assert(pal, `Could not find pal with name: ${name}`);
+
+      this.uniqueBreeds.push(pal);
     });
   }
 
@@ -125,6 +129,11 @@ export class BreedingCalculator {
       } else {
         offspring.delete(breed[2]);
       }
+    });
+
+    // remove pals that can only breed with themselves
+    this.uniqueBreeds.forEach((p) => {
+      offspring.delete(p);
     });
 
     return Array.from(offspring);
