@@ -44,33 +44,69 @@ export class BreedingCalculator {
     this.parseSpecialBreeds();
   }
 
-  getChildrenRankRange(childrenRank: number) {
-    const index = this.sortedRanks.findIndex((r) => r === childrenRank);
+  getChildrenRankRange(children: Pal) {
+    const sorterdRanksWithoutSpecialBreeds = this.sortedRanks.filter(
+      (rank) => !this.specialBreeds.some((breed) => breed[2].CombiRank === rank)
+    );
+    const index = sorterdRanksWithoutSpecialBreeds.findIndex(
+      (r) => r === children.CombiRank
+    );
+
     if (index === -1) {
-      throw new Error(`Rank ${childrenRank} not found`);
+      throw new Error(`Rank ${children.CombiRank} not found`);
     }
 
-    return {
-      index,
-      range: [childrenRank, this.sortedRanks[index + 1]],
-    } satisfies IndexedRange;
+    let startRange = children.CombiRank;
+    const previousRank = sorterdRanksWithoutSpecialBreeds[index - 1];
+
+    if (previousRank) {
+      const previousPal = this.palsByCombiRank.get(previousRank)!;
+
+      // check distance to previous rank
+      const previousRankDistance = Math.floor(
+        (children.CombiRank - sorterdRanksWithoutSpecialBreeds[index - 1]) / 2
+      );
+
+      if (previousPal.Order < children.Order) {
+        startRange = children.CombiRank - previousRankDistance + 1;
+      } else {
+        startRange = children.CombiRank - previousRankDistance;
+      }
+    }
+
+    let endRange = children.CombiRank;
+    const nextRank = sorterdRanksWithoutSpecialBreeds[index + 1];
+
+    if (nextRank) {
+      const nextPal = this.palsByCombiRank.get(nextRank)!;
+
+      // check distance to next rank
+      const nextRankDistance = Math.floor(
+        (sorterdRanksWithoutSpecialBreeds[index + 1] - children.CombiRank) / 2
+      );
+
+      if (nextPal.Order < children.Order) {
+        endRange = children.CombiRank + nextRankDistance - 1;
+      } else {
+        endRange = children.CombiRank + nextRankDistance;
+      }
+    }
+
+    return [startRange, endRange] satisfies [number, number];
   }
 
-  findMates(
-    childrenRankRange: { index: number; range: [number, number] },
-    parentRank: number
-  ) {
+  findMates(childrenRankRange: [number, number], parentRank: number) {
     const mates: Pal[] = [];
 
     for (let i = 0; i <= this.sortedRanks.length; i++) {
       const mateRank = this.sortedRanks[i];
       const possibleChildrenRank = (mateRank + parentRank) / 2;
 
-      if (possibleChildrenRank < childrenRankRange.range[0]) {
+      if (possibleChildrenRank < childrenRankRange[0]) {
         continue;
       }
 
-      if (possibleChildrenRank >= childrenRankRange.range[1]) {
+      if (possibleChildrenRank >= childrenRankRange[1]) {
         break;
       }
 
@@ -92,7 +128,7 @@ export class BreedingCalculator {
 
     if (parents.length > 0) return parents.concat([[pal, pal]]);
 
-    const childrenRankRange = this.getChildrenRankRange(pal.CombiRank);
+    const childrenRankRange = this.getChildrenRankRange(pal);
 
     for (const rank of this.sortedRanks) {
       if (rank > pal.CombiRank) break;
@@ -112,8 +148,13 @@ export class BreedingCalculator {
     for (const rank of this.sortedRanks) {
       const possibleChild = this.palsByCombiRank.get(rank)!;
 
+      // skip if possibleChild is specialBreed
+      if (this.specialBreeds.some((breed) => breed[2] === possibleChild)) {
+        continue;
+      }
+
       const mates = this.findMates(
-        this.getChildrenRankRange(rank),
+        this.getChildrenRankRange(possibleChild),
         pal.CombiRank
       );
 

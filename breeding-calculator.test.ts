@@ -175,7 +175,7 @@ Deno.test("BreedingCalculator.getOffspringFor", () => {
   let hasError = false;
 
   if (offspringNames.size !== reference.size) {
-    console.log(
+    console.error(
       "My results: ",
       offspringNames.size,
       "Reference: ",
@@ -187,14 +187,14 @@ Deno.test("BreedingCalculator.getOffspringFor", () => {
 
   for (const item of reference) {
     if (!offspringNames.has(item)) {
-      console.log("Missing: ", item);
+      console.error("Missing: ", item);
       hasError = true;
     }
   }
 
   for (const item of offspringNames) {
     if (!item || !reference.has(item)) {
-      console.log("Extra: ", item);
+      console.error("Extra: ", item);
       hasError = true;
     }
   }
