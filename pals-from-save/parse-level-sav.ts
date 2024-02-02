@@ -11,13 +11,12 @@ jsonparser.onValue = ({ value, key, parent, stack, partial }) => {
   } else {
     // write value to parsed.json
     Deno.writeTextFileSync(
-      "./parsed.json",
+      "./parsed-save.json",
       JSON.stringify(value, null, 2) + "\n"
     );
   }
 };
 
-// const levelSavJson = Deno.readTextFileSync("./Level.sav.json");
 const file = await Deno.open("./Level.sav.json");
 const buffer = new Uint8Array(511 * 1024 * 1024);
 let bytesRead = await file.read(buffer);
