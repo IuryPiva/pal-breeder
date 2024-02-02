@@ -1,4 +1,6 @@
 import parsedJson from './parsed-save.json' with { type: "json" };
+import { simplifyObject } from './simplify-object.ts';
+import type { PalSaveData } from './types.ts';
 
 const saveParameters: any[] = []
 
@@ -30,45 +32,15 @@ function recursiveTraverse(obj: any, path: string) {
 
 recursiveTraverse(parsedJson, "");
 
-const isObject = (obj: any) => obj !== null && typeof obj === "object";
-const isDefined = (value: any) => value !== undefined;
-const hasValue = (obj: any) => isObject(obj) && isDefined(obj.value);
-
-function simplifyObject(obj: any) {
-  if (isObject(obj)) {
-    if (isDefined(obj.value)) {
-      if (isObject(obj.value)) {
-        return simplifyObject(obj.value);
-      }
-
-      return obj.value;
-    }
-
-    if (isDefined(obj.Value)) {
-      if (isObject(obj.Value)) {
-        return simplifyObject(obj.Value);
-      }
-
-      return obj.Value;
-    }
-
-    if (isDefined(obj.values)) {
-      if (Array.isArray(obj.values)) {
-        return obj.values.map((value) => simplifyObject(value));
-      };
-    }
-
-    for (const key in obj) {
-      if (isObject(obj[key])) {
-        obj[key] = simplifyObject(obj[key]);
-      }
-    }
+const isValidPalSaveData = (pal: unknown): pal is PalSaveData => {
+  if (typeof pal !== "object" || pal === null) {
+    return false;
   }
 
-  return obj;
+  return "CharacterID" in pal;
 }
 
-const pals = simplifyObject(saveParameters).filter(value => !value.IsPlayer);
+const pals: PalSaveData[] = simplifyObject(saveParameters).filter(isValidPalSaveData);
 
 Deno.writeTextFileSync(
   "./pals.json",
